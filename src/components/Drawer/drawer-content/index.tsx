@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import Social from "./social";
 import StakeIcon from "../../../assets/icons/stake.svg";
 import BondIcon from "../../../assets/icons/bond.svg";
-import WonderlandIcon from "../../../assets/icons/wonderland-nav-header.svg";
+// import WonderlandIcon from "../../../assets/icons/wonderland-nav-header.svg";
+import WonderlandIcon from "../../../assets/logo.svg";
 import DashboardIcon from "../../../assets/icons/dashboard.svg";
 import { trim, shorten } from "../../../helpers";
 import { useAddress } from "../../../hooks";
 import useBonds from "../../../hooks/bonds";
-import { Link } from "@material-ui/core";
+import { Link, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
 import DocsIcon from "../../../assets/icons/stake.svg";
@@ -41,7 +42,12 @@ function NavContent() {
         <div className="dapp-sidebar">
             <div className="branding-header">
                 <Link href="https://wonderland.money" target="_blank">
-                    <img alt="" src={WonderlandIcon} />
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <img alt="" src={WonderlandIcon} style={{ width: "40px", height: "40px" }} />
+                        <Typography variant="subtitle1" color="primary" style={{ color: "gold", fontSize: "24px", fontWeight: "bold", marginLeft: "8px", textDecoration: "none" }}>
+                            Calm-DAO
+                        </Typography>
+                    </div>
                 </Link>
 
                 {address && (
@@ -62,6 +68,7 @@ function NavContent() {
                             return checkPage(location, "dashboard");
                         }}
                         className={classnames("button-dapp-menu", { active: isActive })}
+                        style={{ textDecoration: "none" }}
                     >
                         <div className="dapp-menu-item">
                             <img alt="" src={DashboardIcon} />
@@ -76,6 +83,7 @@ function NavContent() {
                             return checkPage(location, "stake");
                         }}
                         className={classnames("button-dapp-menu", { active: isActive })}
+                        style={{ textDecoration: "none" }}
                     >
                         <div className="dapp-menu-item">
                             <img alt="" src={StakeIcon} />
@@ -91,6 +99,7 @@ function NavContent() {
                             return checkPage(location, "mints");
                         }}
                         className={classnames("button-dapp-menu", { active: isActive })}
+                        style={{ textDecoration: "none" }}
                     >
                         <div className="dapp-menu-item">
                             <img alt="" src={BondIcon} />
@@ -101,7 +110,7 @@ function NavContent() {
                     <div className="bond-discounts">
                         <p>Mint discounts</p>
                         {bonds.map((bond, i) => (
-                            <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
+                            <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"} style={{ textDecoration: "none" }}>
                                 {!bond.bondDiscount ? (
                                     <Skeleton variant="text" width={"150px"} />
                                 ) : (
@@ -121,6 +130,7 @@ function NavContent() {
                             return checkPage(location, "calculator");
                         }}
                         className={classnames("button-dapp-menu", { active: isActive })}
+                        style={{ textDecoration: "none" }}
                     >
                         <div className="dapp-menu-item">
                             <img alt="" src={GlobeIcon} />
@@ -130,11 +140,11 @@ function NavContent() {
                 </div>
             </div>
             <div className="dapp-menu-doc-link">
-                <Link href="https://wonderland.gitbook.io/wonderland/" target="_blank">
+                <Link href="https://wonderland.gitbook.io/wonderland/" target="_blank" style={{ textDecoration: "none" }}>
                     <img alt="" src={DocsIcon} />
                     <p>Docs</p>
                 </Link>
-                <Link href="https://legacy.wonderland.money/" target="_blank">
+                <Link href="https://legacy.wonderland.money/" target="_blank" style={{ textDecoration: "none" }}>
                     <p>Legacy website</p>
                 </Link>
             </div>

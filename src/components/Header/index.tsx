@@ -1,7 +1,8 @@
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import MenuIcon from "../../assets/icons/hamburger.svg";
+// import MenuIcon from "../../assets/icons/hamburger.svg";
+import MenuIcon from "../../assets/logo.svg";
 import TimeMenu from "./time-menu";
 import ConnectButton from "./connect-button";
 import WrapButton from "./wrap-button";
@@ -51,7 +52,17 @@ function Header({ handleDrawerToggle, drawe }: IHeader) {
             <AppBar position="sticky" className={classes.appBar} elevation={0}>
                 <Toolbar disableGutters className="dapp-topbar">
                     <div onClick={handleDrawerToggle} className="dapp-topbar-slider-btn">
-                        <img src={MenuIcon} alt="" />
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            <img alt="" src={MenuIcon} style={{ width: "40px", height: "40px" }} />
+                            <Typography
+                                variant="subtitle1"
+                                color="primary"
+                                style={{ color: "gold", fontSize: "24px", fontWeight: "bold", marginLeft: "8px", textDecoration: "none" }}
+                            >
+                                Calm-DAO
+                            </Typography>
+                        </div>
+                        {/* <img src={MenuIcon} alt="" /> */}
                     </div>
                     <div className="dapp-topbar-btns-wrap">
                         {!isVerySmallScreen && <TimeMenu />}
